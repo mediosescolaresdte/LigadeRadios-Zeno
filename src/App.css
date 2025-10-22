@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+/* App.css: reglas base para evitar scroll y overscroll */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* evita el overscroll \"bounce\" en móviles */
+body {
+  overscroll-behavior: none;
+}
+
+/* iframe sin borde por seguridad visual */
+iframe {
+  border: 0;
+}

@@ -1,74 +1,77 @@
+// App.jsx
+import React from 'react';
 import logo from '/logoliga.png';
-import './App.css'
+import './App.css';
 
-
-function App() {
-
-
+export default function App() {
   return (
-    <>
-      <div className="fixed inset-0 bg-gradient-to-b from-black to-blue-800 overflow-hidden -z-10">
-        {/* Wrapper que mueve la pila hacia arriba y da padding inferior */}
-        <div className="w-full h-full flex flex-col items-center justify-center transform -translate-y-6 sm:-translate-y-10 pb-10">
-          {/* Logo como enlace (abre la URL en nueva pestaña) */}
-          <a
-            href="https://giss.tv:666/radiosescolares.mp3"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Abrir stream radios escolares"
-            className={`
-                  inline-flex items-center justify-center
-                  focus:outline-none
-                  transform-gpu transition-transform duration-200
-                  hover:scale-105 active:scale-95
-                  select-none pointer-events-auto
-      
-                  /* altura responsive: más pequeño en móviles, grande en escritorio */
-                  h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[75vh]
-                  w-auto
-                `}
+    <main className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-black to-blue-800 overflow-hidden">
+      {/* Contenedor principal: evita scroll y centra todo */}
+      <div className="relative w-full h-full flex flex-col items-center justify-center px-4 py-6">
+
+        {/* Logo (ya NO es link). Tiene efecto hover solo visual */}
+        <div
+          role="img"
+          aria-label="Logo Liga de Radios Escolares"
+          tabIndex={-1}
+          className="block w-full max-w-4xl"
+        >
+          <div
+            className="
+              w-full flex items-center justify-center
+              h-[26vh] sm:h-[32vh] md:h-[38vh] lg:h-[44vh]
+              transition-transform duration-200 ease-out
+              hover:scale-105 hover:translate-y-[-2px] hover:shadow-2xl
+              rounded-lg
+            "
           >
             <img
               src={logo}
               alt="logo"
-              className="h-full w-auto object-contain draggable:false pointer-events-none select-none"
+              className="max-h-full w-auto object-contain select-none pointer-events-none"
               draggable={false}
             />
-          </a>
-
-          {/* Cuadro de texto: más cerca del logo con margen negativo y limitando altura */}
-          <div
-            className={`
-                  bg-white/95 text-gray-900
-                  max-w-2xl w-[92%] sm:w-[80%] md:w-[70%]
-                  px-5 py-4 md:px-6 md:py-5
-                  rounded-2xl shadow-lg text-center
-      
-                  /* aumentamos la superposición para acercar más el texto al logo */
-                  -mt-14 sm:-mt-16 md:-mt-20
-      
-                  /* evitar que el cuadro llegue al borde inferior; si excede, scrollea internamente */
-                  max-h-[30vh] sm:max-h-[26vh] md:max-h-[22vh] overflow-auto
-                `}
-          >
-            <p className="text-base sm:text-lg md:text-lg leading-relaxed">
-              Somos la <strong>Liga de Radios Escolares Bonaerenses</strong>, una plataforma digital para las
-              voces de las y los
-              protagonistas de las emisoras escolares de toda la provincia. Las producciones que suenan en nuestra
-              programación surgen de gracias al aporte de las y los estudiantes de distintos años junto a sus
-              docentes.
-            </p>
           </div>
         </div>
-      </div>
 
-      <div className="i">
-        <iframe src="https://zeno.fm/player/liga-de-radios-escolares-pba" frameborder="0"
-        ></iframe>
+        {/* Reproductor embebido (iframe) — ahora siempre visible pero con tamaño responsivo */}
+        <div className="mt-3 flex items-center justify-center w-full">
+          <div
+            className="
+              w-[88vw] sm:w-[80vw] md:w-[60vw] lg:w-[48vw] max-w-2xl
+              h-[10vh] sm:h-[12vh] md:h-[16vh] lg:h-[20vh]
+              rounded-lg overflow-hidden shadow-lg
+            "
+          >
+            <iframe
+              src="https://zeno.fm/player/liga-de-radios-escolares-pba"
+              title="Zeno.fm Player"
+              frameBorder="0"
+              className="w-full h-full"
+              allow="autoplay; encrypted-media"
+            />
+          </div>
+        </div>
+
+        {/* Texto descriptivo (debajo). Tipografías y alturas reducidas en xs para evitar overflow */}
+        <div
+          className="
+            bg-white/95 text-gray-900
+            max-w-2xl w-[92%] sm:w-[80%] md:w-[70%]
+            px-4 py-3 sm:px-5 sm:py-4 md:px-6 md:py-5
+            rounded-2xl shadow-lg text-center mt-4
+            overflow-auto
+            max-h-[28vh] sm:max-h-[24vh] md:max-h-[20vh] lg:max-h-[16vh]
+          "
+        >
+          <p className="text-xs sm:text-sm md:text-base leading-relaxed">
+            Somos la <strong>Liga de Radios Escolares Bonaerenses</strong>, una plataforma digital para las voces de las y los
+            protagonistas de las emisoras escolares de toda la provincia. Las producciones que suenan en nuestra
+            programación surgen gracias al aporte de las y los estudiantes de distintos años junto a sus docentes.
+          </p>
+        </div>
 
       </div>
-    </>
-  )
+    </main>
+  );
 }
-
-export default App
