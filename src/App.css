@@ -1,16 +1,24 @@
 html, body, #root {
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   margin: 0;
 }
-body { overscroll-behavior: none; }
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 
 .radio-page {
-  min-height: 100vh;
-  min-height: 100svh;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(28px, 5vh, 56px) 16px;
+  padding: 16px 16px 60px;
   background: linear-gradient(to bottom, #000, #1e40af);
 }
 .radio-content {
@@ -18,12 +26,12 @@ body { overscroll-behavior: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(24px, 4vh, 36px);
+  gap: clamp(16px, 3vh, 30px);
 }
 .logo-frame {
   position: relative;
   width: min(86vw, 440px);
-  width: min(86vw, 48svh, 440px);
+  width: min(86vw, 34svh, 440px);
   aspect-ratio: 660 / 540;
   overflow: hidden;
   transition: transform 200ms ease-out, filter 200ms ease-out;
@@ -103,6 +111,18 @@ body { overscroll-behavior: none; }
   line-height: 1.5;
   color: #e2e8f0;
 }
+.institutional-footer {
+  position: absolute;
+  right: clamp(12px, 3vw, 32px);
+  bottom: clamp(10px, 2vh, 20px);
+  width: min(67.5vw, 585px);
+  pointer-events: none;
+}
+.institutional-footer img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .is-playing .playback-status {
   font-weight: 700;
   letter-spacing: .08em;
@@ -144,8 +164,19 @@ body { overscroll-behavior: none; }
   to { transform: scaleY(1); }
 }
 @keyframes spinner { to { transform: rotate(360deg); } }
+@media (max-height: 500px) {
+  .radio-page { padding: 8px 12px 42px; }
+  .radio-content { gap: 10px; }
+  .logo-frame { width: min(70vw, 26svh, 280px); }
+  .description { padding: 8px 12px; }
+  .description p { font-size: 11px; line-height: 1.35; }
+  .radio-player { gap: 8px; }
+  .play-button { width: 68px; }
+  .playback-status { font-size: 12px; }
+  .institutional-footer { width: min(67.5vw, 405px); }
+}
 @media (max-height: 500px) and (orientation: landscape) {
-  .logo-frame { width: min(60vw, 280px); }
+  .logo-frame { width: min(60vw, 26svh, 280px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .logo-frame, .play-button { transition: none; }

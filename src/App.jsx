@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import logo from '/logoliga.png';
+import footerLogo from './assets/images/Pie-institucional-blanco-3 (2).png';
 import './App.css';
 
 // La misma señal que utiliza el reproductor oficial de esta emisora en Zeno.
@@ -147,6 +148,12 @@ export default function App() {
         </div>
         <RadioPlayer />
       </div>
+      <footer className="institutional-footer">
+        <img
+          src={footerLogo}
+          alt="Dirección de Tecnología Educativa, Dirección General de Cultura y Educación de la Provincia de Buenos Aires"
+        />
+      </footer>
     </main>
   );
 }
